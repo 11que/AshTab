@@ -1,8 +1,11 @@
 <template>
   <div class="sh-time">
-    <div class="mode-default size-big shadow">
+    <div class="mode-default size-big shadow"
+     :style="{'transform':'translate(' + x +'px, ' + y +'px)'}">
       <!-- <span class="show">{{showTime}}</span> -->
-      <span class="show" v-if="true">{{showTime.slice(0,5)}}</span>
+      <span class="show" v-if="true" >
+        {{showTime.slice(0,5)}}
+      </span>
     </div>
   </div>
 </template>
@@ -15,6 +18,8 @@ export default {
         mod:'mod1',
         start: '',
       },// 时间初始化
+      x: 0,
+      y: 0,
     };
   },
 
@@ -61,7 +66,12 @@ export default {
   },
 
   mounted() {
-    // this.show = true
+    document.onmousemove = () => {
+      let width = document.body.clientWidth / 40
+      let height = document.body.clientHeight / 40
+      this.x = event.pageX / 20 - width ;
+      this.y = event.pageY / 20 - height;
+    }
   }
 }
 
@@ -73,6 +83,9 @@ export default {
     font-weight: 500;
     cursor:default;//指针变化
     letter-spacing: 0.01em;//文字间隔
+  }
+  div {
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
   .shadow {

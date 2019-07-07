@@ -8,7 +8,8 @@
 * {
   margin: 0;
   padding: 0;
-  transition: all .26s
+  transition: all .26s;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1)
 }
 // #app {
 //   font-family: 'Avenir', Helvetica, Arial, sans-serif;

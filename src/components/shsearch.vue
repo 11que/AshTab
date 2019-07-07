@@ -87,7 +87,8 @@ export default {
   .shfont-model-color {
     input {
       &::-webkit-input-placeholder {
-        color: #fff
+        color: #fff;
+        text-align: center
       }
     }
   }

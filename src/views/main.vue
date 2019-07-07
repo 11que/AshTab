@@ -1,14 +1,19 @@
 <template>
   <div id="ash">
-    <div class="main" :class="{'active':active}" :style="{'background-image':'url('+bg+')'}">
-      <div class="link" style="fontSize:30px">
+    <div class="main" 
+    :class="{'active':active}" 
+    :style="{'background-image':'url('+bg+')'}"
+    >
+      <!-- <div class="link" style="fontSize:30px">
         <a :href="link[0].link">{{link[0].name}}</a>
-      </div>
+      </div> -->
       <div class="content">
-        <div class="middle">
-          <sh-time></sh-time>
+        <!-- <sh-search></sh-search> -->
+        <div class="middle" >
+          <div class="timeContent">
+            <sh-time></sh-time>
+          </div>
         </div>
-        <sh-search></sh-search>
       </div>
     </div>
     <sh-menu :status="active" @status="status"></sh-menu>
@@ -26,18 +31,21 @@ export default {
       link: [//需要放入外部json
         {name:'bibilili', link:'https://www.bilibili.com'}
       ],
-      bg: require('../assets/59289921_p0.jpg')
+      // bg: require('../assets/59289921_p0.jpg')
+      bg: 'https://raw.githubusercontent.com/Aki112/iiimgHouse./master/store/37736449_p0.png',
+      bg: ''
     };
   },
   methods: {
     status(i) {
       this.active = i.active
     },
-
     cn(i) {
       console.log(i)
     },
+    timeTran(event) {
 
+    },
 
   },
   computed: {
@@ -46,8 +54,6 @@ export default {
   components: {
     shMenu,shTime,shSearch
   },
-
-
 
   mounted() {
     this.cn(this.bg)
@@ -70,7 +76,13 @@ export default {
   align-items: center;
   overflow: hidden;
   background-position:center center;
-  transform: translateX(0px)
+  transform: translateX(0px);
+  background-size: cover,100%;
+  // background-attachment: fixed;
+  background-position: 50%;
+}
+.timeContent {
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1)
 }
 
 .link {
